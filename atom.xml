@@ -3,11 +3,11 @@
   <title>Hexo</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://github.com/ChillDarkSage/ChillDarkSage.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://github.com/ChillDarkSage/ChillDarkSage.github.io/"/>
   <updated>2021-08-23T09:59:27.389Z</updated>
-  <id>http://example.com/</id>
+  <id>https://github.com/ChillDarkSage/ChillDarkSage.github.io/</id>
   
   <author>
     <name>Miuh</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2021/08/23/hello-world/"/>
-    <id>http://example.com/2021/08/23/hello-world/</id>
+    <link href="https://github.com/ChillDarkSage/ChillDarkSage.github.io/2021/08/23/hello-world/"/>
+    <id>https://github.com/ChillDarkSage/ChillDarkSage.github.io/2021/08/23/hello-world/</id>
     <published>2021-08-23T10:00:35.086Z</published>
     <updated>2021-08-23T09:59:27.389Z</updated>
     
