@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  魔法少女与灯神的故事 序 |    Dark Ocean</title>
+  <title>  解决Hexo-Renderer-Sass屡次安装无效的问题 |    Dark Ocean</title>
   <meta name="description" content="这儿住着一个梦呓的人.">
   <!-- 标签页图标 -->
   
@@ -125,7 +125,7 @@
 <article class="post-inner">
   <div class="post-content-outer">
     <div class="post-intro">
-      <div class="post-title animate__animated  animate__fadeInUp">魔法少女与灯神的故事 序</div>
+      <div class="post-title animate__animated  animate__fadeInUp">解决hexo-renderer-sass屡次安装无效的问题</div>
       <div class="meta-intro animate__animated  animate__fadeInUp">Aug 24 2021</div>
       
     </div>
@@ -136,9 +136,49 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <p>&emsp;&emsp;“第一：我接下来的愿望对你可能比较困难，为了保证你不会骗我，你必须在完成之前都待在我身边，还要请你听我差遣；当然我不会做得太过分，毕竟合约上已经写了契约时长的最大限度；不然——我就给你差评！”<br><br>&emsp;&emsp;“……别小瞧我啊；还有这应该算两个愿望才对吧？”<br><br>&emsp;&emsp;“那就算两个，没关系。”<br><br>&emsp;&emsp;“这样啊，接着呢？”<br><br>&emsp;&emsp;“第三个愿望是：我希望成为一名魔法少女，唔，就那种拥有夜晚外出飞在天上惩治邪恶敌人的力量的魔法少女——喂，你能做到么？”<br><br>&emsp;&emsp;“……”<br><br>&emsp;&emsp;哈？<br><br>&emsp;&emsp;这个女人所说的话与她这副长相的人会说的话大相径庭，并且内容南辕北辙。坦白说，即使身为身经百战顾客五星好评无数业界威名赫赫的老牌灯神，我也愣了片刻。<br><br>&emsp;&emsp;“就是说你不能做到咯？”<br><br>&emsp;&emsp;看来女孩察言观色功夫一流——叹气，这透露出她对灯神大人毫无敬意。<br><br>&emsp;&emsp;“怎么会！我当然能实现你的愿望……那么，你确认是……”<br><br>&emsp;&emsp;“程序就不用走了，现在请开始吧。” <br><br>&emsp;&emsp;“……请稍等。”<br><br>&emsp;&emsp;我回想起女孩的三个愿望，理了理头绪。<br><br>&emsp;&emsp;啊哈，计划一眨眼就形成了，而且兼顾顾客和我的体验；不愧是身为老牌灯神的我啊。我象征性地清清嗓子：<br><br>&emsp;&emsp;“那么，愿望从现在开始生效咯，希望你满意？”<br><br>——以上是半个小时前的事情，现在我后悔了。<br><br>&emsp;&emsp;“再来。”<br><br>&emsp;&emsp;眼前这个女孩固执地开口，这已经是第十三次飞行失败了；而我的计划？别提开始了，甚&emsp;&emsp;至没来得及搁浅就在海上沉船了！<br><br>&emsp;&emsp;“喂，你快点啊，别愣在那发呆。”<br><br>&emsp;&emsp;这次轮到灯神叹气了。<br><br><br></p>
-<hr>
-<p>&emsp;&emsp;那么，接下来这个故事就正式开始了。今后会尽量更新。<br><br>&emsp;&emsp;祝你体验愉快！</p>
+        <p>&emsp;&emsp;使用Hexo的过程中，不论是输入什么指令，都反复出现如下状况：</p>
+<pre><code>ERROR &#123;
+  err: Error: Node Sass does not yet support your current environment: Windows 64-bit with Unsupported runtime (93)
+  For more information on which environments are supported please see:
+  https://github.com/sass/node-sass/releases/tag/v4.14.1
+      at module.exports (C:\Miuh&#39;s Blog\blog\node_modules\_node-sass@4.14.1@node-sass\lib\binding.js:13:13)
+      at Object.&lt;anonymous&gt; (C:\Miuh&#39;s Blog\blog\node_modules\_node-sass@4.14.1@node-sass\lib\index.js:14:35)
+      at Module._compile (node:internal/modules/cjs/loader:1101:14)
+      at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+      at Module.load (node:internal/modules/cjs/loader:981:32)
+      at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+      at Module.require (node:internal/modules/cjs/loader:1005:19)
+      at require (node:internal/modules/cjs/helpers:94:18)
+      at Object.&lt;anonymous&gt; (C:\Miuh&#39;s Blog\blog\node_modules\_hexo-renderer-sass@0.4.0@hexo-renderer-sass\lib\renderer.js:3:12)
+      at Module._compile (node:internal/modules/cjs/loader:1101:14)
+      at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+      at Module.load (node:internal/modules/cjs/loader:981:32)
+      at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+      at Module.require (node:internal/modules/cjs/loader:1005:19)
+      at req (C:\Miuh&#39;s Blog\blog\node_modules\_hexo@5.4.0@hexo\lib\hexo\index.js:292:23)
+      at C:\Miuh&#39;s Blog\blog\node_modules\hexo-renderer-sass\index.js:4:20
+      at C:\Miuh&#39;s Blog\blog\node_modules\_hexo@5.4.0@hexo\lib\hexo\index.js:305:14
+      at tryCatcher (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\util.js:16:23)
+      at Promise._settlePromiseFromHandler (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\promise.js:547:31)
+      at Promise._settlePromise (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\promise.js:604:18)      at Promise._settlePromise0 (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\promise.js:649:10)
+      at Promise._settlePromises (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\promise.js:729:18)
+&#125; Plugin load failed: %s hexo-renderer-sass
+</code></pre>
+<p>&emsp;&emsp;屡次安装hexo-renderer-sass都毫无作用，翻了不少博客以后也并没有得出一个有效的解决方案.整个下午我就对着不断生成的这段错误提示发呆……最终在查询的过程中意外发现有人提到<a target="_blank" rel="noopener" href="https://github.com/lmk123/blog/issues/28">dart-sass已经可以无缝替换node-sass</a>，抱着死马当活马医的心态试了试，在CMD中输入：<br></p>
+<pre><code>cnpm install dart.sass
+</code></pre>
+<p>然后：<br></p>
+<pre><code>hexo clean
+</code></pre>
+<p>结果：<br></p>
+<pre><code>INFO  Validating config
+INFO  Deleted database.
+</code></pre>
+<p>
+        <span class="lazyload-img-span">
+        <img data-src="/./%E8%A7%A3%E5%86%B3hexo-renderer-sass%E5%B1%A1%E6%AC%A1%E5%AE%89%E8%A3%85%E6%97%A0%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/Ohhhhhhhhh!.gif">
+        
+      </span></p>
 <hr>
 
         <!-- 分类文章 -->
