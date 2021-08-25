@@ -72,6 +72,12 @@
         
         
         
+        <a href="/search">
+          <li class="menu-li  animate__animated  animate__fadeInUp">
+            <i class="ri-search-line"></i>
+          </li>
+        </a>
+        
           <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
             <i class="ri-menu-line"></i>
           </li>
@@ -116,6 +122,12 @@
     </a>
   
   
+    <a href="/search">  
+      <div class="mobile-menu-child  animate__animated  animate__fadeInUp">
+        <i class="ri-search-line"></i>
+      </div>
+    </a>
+    
   </div>
 
 
@@ -133,7 +145,6 @@
     </div>
     <div class="post-content-inner">
       <div class="post-content-inner-space">
-
       </div>
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
@@ -246,6 +257,13 @@
 <p>&emsp;&emsp;叹气，看来是我有些过激了。睡吧睡吧。<br><br></p>
 <p>&emsp;&emsp;今夜，希望做个好梦啊。</p>
 
+<span>
+<p align="right">
+   <font color="gray">
+   算上你这次，已经有<span id="busuanzi_value_page_pv"></span>位旅者读过了.
+   </font>
+</p>
+</span>
         <!-- 分类文章 -->
         
       </div>
@@ -259,6 +277,31 @@
       <div class="bottom-comments-inner">
         <!-- valine -->
         
+          <section id="comments" class="comments" style="margin-top: 150px;">
+            <style>
+              .comments{background:#fff}
+              @media screen and (max-width:900px){.comments{margin:auto;padding:10px;background:#fff}}
+            </style>
+            <div id="vcomment" class="comment"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    new Valine({
+        av: AV,
+        el: '#vcomment',
+        notify: notify,
+        app_id: "F8GihU8MEI7JRskqVCoJwoFc-gzGzoHsz",
+        app_key: "gr5i6sWpCvfNfdtX6PG04IsJ",
+        placeholder: "向我展示吧，旅行者，你那源自自身无与伦比的过往的力量!",
+        avatar:"retro",
+    });
+</script>
+
+          </section>
+        
         <!-- Gitalk -->
         
         <!-- livere -->
@@ -268,6 +311,7 @@
     
   </div>
 </article>
+
   </div>
 </div>
 
@@ -275,7 +319,51 @@
 
 <!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
 
-  <div class="footer-outer animate__animated  animate__fadeInUp">
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="./js/src/Valine.min.js"></script>
+<script>
+    //   自定义邮箱审核规则
+    document.body.addEventListener('click', function(e) {
+        if (e.target.classList.contains('vsubmit')) {
+            const email = document.querySelector('input[type=email]');
+            const nick = document.querySelector('input[name=nick]');
+            const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (!email.value || !nick.value || !reg.test(email.value)) {
+                const str = `<div class="valert text-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
+                const vmark = document.querySelector('.vmark');
+                vmark.innerHTML = str;
+                vmark.style.display = 'block';
+                setTimeout(function() {
+                    vmark.style.display = 'none';
+                    vmark.innerHTML = '';
+                }, 2500);
+            }
+        }
+    })
+</script>
+<script>
+    // 点击回复直接评论,官方版本点击回复时都是跳回到页面上方的评论框进行回复，评论框是固定不动的
+    // 参考https://immmmm.com/valine-diy,用到jQuery
+    $(document).ready(function(){
+        //$('.vemoji-btn').text('😀');
+        $("#vcomments").on('click', 'span.vat',function(){
+            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
+            $('textarea#veditor').focus();
+        })
+    })
+</script>
+<!-- 评论框美化 -->
+<style>
+    #comments .veditor{
+        min-height: 10rem;
+        background-image: url(https://gitee.com/wugenqiang/PictureBed/raw/master/CS-Notes/20200425091751.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+        background-color: rgba(255,255,255,0);
+        resize: none;}
+</style>
+<div class="footer-outer animate__animated  animate__fadeInUp">
     <div class="footer-inner">
     <div class="footer-text">
     <p>在这里，遵循缪欧的法则.</p>

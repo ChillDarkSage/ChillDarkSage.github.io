@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  解决Hexo-Renderer-Sass屡次安装无效的问题 |    Dark Ocean</title>
+  <title>  Search |    Dark Ocean</title>
   <meta name="description" content="这儿住着一个梦呓的人.">
   <!-- 标签页图标 -->
   
@@ -136,119 +136,45 @@
 <div class="body-outer">
   <div class="body-inner">
     
+
 <article class="post-inner">
-  <div class="post-content-outer">
-    <div class="post-intro">
-      <div class="post-title animate__animated  animate__fadeInUp">解决hexo-renderer-sass屡次安装无效的问题</div>
-      <div class="meta-intro animate__animated  animate__fadeInUp">Aug 24 2021</div>
-      
-    </div>
-    <div class="post-content-inner">
-      <div class="post-content-inner-space">
-      </div>
-      <div class="post-content-main animate__animated  animate__fadeInUp">
-        <!-- top型目录 -->
-        
-        <p>&emsp;&emsp;使用Hexo的过程中，不论是输入什么指令，都反复出现如下状况：</p>
-<pre><code>ERROR &#123;
-  err: Error: Node Sass does not yet support your current environment: Windows 64-bit with Unsupported runtime (93)
-  For more information on which environments are supported please see:
-  https://github.com/sass/node-sass/releases/tag/v4.14.1
-      at module.exports (C:\Miuh&#39;s Blog\blog\node_modules\_node-sass@4.14.1@node-sass\lib\binding.js:13:13)
-      at Object.&lt;anonymous&gt; (C:\Miuh&#39;s Blog\blog\node_modules\_node-sass@4.14.1@node-sass\lib\index.js:14:35)
-      at Module._compile (node:internal/modules/cjs/loader:1101:14)
-      at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
-      at Module.load (node:internal/modules/cjs/loader:981:32)
-      at Function.Module._load (node:internal/modules/cjs/loader:822:12)
-      at Module.require (node:internal/modules/cjs/loader:1005:19)
-      at require (node:internal/modules/cjs/helpers:94:18)
-      at Object.&lt;anonymous&gt; (C:\Miuh&#39;s Blog\blog\node_modules\_hexo-renderer-sass@0.4.0@hexo-renderer-sass\lib\renderer.js:3:12)
-      at Module._compile (node:internal/modules/cjs/loader:1101:14)
-      at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
-      at Module.load (node:internal/modules/cjs/loader:981:32)
-      at Function.Module._load (node:internal/modules/cjs/loader:822:12)
-      at Module.require (node:internal/modules/cjs/loader:1005:19)
-      at req (C:\Miuh&#39;s Blog\blog\node_modules\_hexo@5.4.0@hexo\lib\hexo\index.js:292:23)
-      at C:\Miuh&#39;s Blog\blog\node_modules\hexo-renderer-sass\index.js:4:20
-      at C:\Miuh&#39;s Blog\blog\node_modules\_hexo@5.4.0@hexo\lib\hexo\index.js:305:14
-      at tryCatcher (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\util.js:16:23)
-      at Promise._settlePromiseFromHandler (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\promise.js:547:31)
-      at Promise._settlePromise (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\promise.js:604:18)      at Promise._settlePromise0 (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\promise.js:649:10)
-      at Promise._settlePromises (C:\Miuh&#39;s Blog\blog\node_modules\_bluebird@3.7.2@bluebird\js\release\promise.js:729:18)
-&#125; Plugin load failed: %s hexo-renderer-sass
-</code></pre>
-<p>&emsp;&emsp;屡次安装hexo-renderer-sass都毫无作用，翻了不少博客以后也并没有得出一个有效的解决方案.整个下午我就对着不断生成的这段错误提示发呆……最终在查询的过程中意外发现有人提到<a target="_blank" rel="noopener" href="https://github.com/lmk123/blog/issues/28">dart-sass已经可以无缝替换node-sass</a>，抱着死马当活马医的心态试了试，在CMD中输入：<br></p>
-<pre><code>cnpm install dart.sass
-</code></pre>
-<p>然后：<br></p>
-<pre><code>hexo clean
-</code></pre>
-<p>结果：<br></p>
-<pre><code>INFO  Validating config
-INFO  Deleted database.
-</code></pre>
-<p>
-        <span class="lazyload-img-span">
-        <img data-src="/./%E8%A7%A3%E5%86%B3hexo-renderer-sass%E5%B1%A1%E6%AC%A1%E5%AE%89%E8%A3%85%E6%97%A0%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/Ohhhhhhhhh!.gif">
-        
-      </span></p>
-<hr>
+    <div class="post-content-outer">
+      <div class="post-intro">
 
-<span>
-<p align="right">
-   <font color="gray">
-   算上你这次，已经有<span id="busuanzi_value_page_pv"></span>位旅者读过了.
-   </font>
-</p>
-</span>
-        <!-- 分类文章 -->
-        
       </div>
-      <div class="post-content-inner-space">
-        
-      </div>
-   </div>
-    <!-- 评论 -->
-    
-    <div class="bottom-comments-outer">
-      <div class="bottom-comments-inner">
-        <!-- valine -->
-        
-          <section id="comments" class="comments" style="margin-top: 150px;">
-            <style>
-              .comments{background:#fff}
-              @media screen and (max-width:900px){.comments{margin:auto;padding:10px;background:#fff}}
-            </style>
-            <div id="vcomment" class="comment"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    var notify = 'true' == true ? true : false;
-    var verify = 'false' == true ? true : false;
-    new Valine({
-        av: AV,
-        el: '#vcomment',
-        notify: notify,
-        app_id: "F8GihU8MEI7JRskqVCoJwoFc-gzGzoHsz",
-        app_key: "gr5i6sWpCvfNfdtX6PG04IsJ",
-        placeholder: "向我展示吧，旅行者，你那源自自身无与伦比的过往的力量!",
-        avatar:"retro",
-    });
-</script>
-
-          </section>
-        
-        <!-- Gitalk -->
-        
-        <!-- livere -->
-        
+      <div class="post-content-inner">
+        <div class="post-content-inner-space">
+  
         </div>
-      </div>
-    
-  </div>
-</article>
+        <div class="post-content-main animate__animated  animate__fadeInUp">
+            <div class="search">
+                <div class="search-input-outer">
+                    <form>
+                        <input type="text" placeholder="想要搜些什么呢..." id="local-search-input" name="q" results="0">
+                        <button type="submit"><i class="ri-search-line"></i></button>
+                    </form>
+                </div>
+                <div id="local-search-result">
+                    
+                </div>
+            </div>
 
+        </div>
+        <div class="post-content-inner-space">
+        </div>
+     </div>
+    </div>
+  </article>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">      
+    var search_path = "search.xml";
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
   </div>
 </div>
 
