@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chilldarksage.github.io/about/index.html</loc>
+    
+    <lastmod>2021-08-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://chilldarksage.github.io/tag/index.html</loc>
     
     <lastmod>2021-08-28</lastmod>
@@ -45,13 +52,6 @@
   
   <url>
     <loc>https://chilldarksage.github.io/2021/08/24/%E8%A7%A3%E5%86%B3hexo-renderer-sass%E5%AE%89%E8%A3%85%E6%97%A0%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
-    
-    <lastmod>2021-08-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://chilldarksage.github.io/about/index.html</loc>
     
     <lastmod>2021-08-27</lastmod>
     
