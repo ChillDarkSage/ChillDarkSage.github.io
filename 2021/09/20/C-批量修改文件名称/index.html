@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Miuh">
+
+
+
+
+
+<title>C#批量修改文件名称 | Dark Ocean</title>
+
+
+
+    <link rel="icon" href="/favicon%20-%20White.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Dark Ocean" type="application/atom+xml">
+</head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Dark Ocean</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Dark Ocean</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">C#批量修改文件名称</h1>
+            
+                <div class="post-meta">
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">Sep 20, 2021&nbsp;&nbsp;16:34:24</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%B0%8F%E5%B7%A5%E5%85%B7/">小工具</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>&emsp;&emsp;在B站上下载了一堆视频打算转成音频, 但是发现所有视频文件都包含“_高清&nbsp;720P”这个后缀, 看起来非常难受. 手动改则会耗费非常多的时间, 所以写了个小工具自动改名, 原理不能再简单: 只是删除所有文件名中这个字符串而已, 没什么好说的. <bp></bp></p>
+<p>&emsp;&emsp;新建一个WPF程序(使用了<a title="GitHub" target="_blank" rel="noopener" href="https://github.com/sourcechord/FluentWPF">FluentWPF</a>的UI, 还不错).</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xaml">&lt;fw:AcrylicWindow x:Class=&quot;Rename.MainWindow&quot;<br>        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;<br>        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;<br>        xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;<br>        xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;<br>        xmlns:fw=&quot;clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF&quot;<br>        mc:Ignorable=&quot;d&quot;<br>        Title=&quot;改名&quot; Height=&quot;150&quot; Width=&quot;300&quot; ResizeMode=&quot;CanMinimize&quot;  WindowStartupLocation=&quot;CenterScreen&quot;&gt;<br>    &lt;StackPanel &gt;<br>        &lt;TextBox x:Name=&quot;textBoxPath&quot; IsReadOnly=&quot;True&quot; Width=&quot;200&quot; Height=&quot;30&quot; FontSize=&quot;10&quot; Foreground=&quot;WhiteSmoke&quot; Style=&quot;&#123;StaticResource TextBoxRevealStyle&#125;&quot; HorizontalAlignment=&quot;Center&quot; Margin=&quot;5&quot;/&gt;<br>        &lt;Button Content=&quot;浏览&quot; Width=&quot;200&quot; Height=&quot;30&quot; FontSize=&quot;10&quot; Foreground=&quot;WhiteSmoke&quot; Style=&quot;&#123;StaticResource ButtonAccentRevealStyle&#125;&quot; HorizontalAlignment=&quot;Center&quot; Click=&quot;Select&quot;/&gt;<br>        &lt;Button Content=&quot;工作&quot; Width=&quot;200&quot; Height=&quot;30&quot; FontSize=&quot;10&quot; Foreground=&quot;WhiteSmoke&quot; Style=&quot;&#123;StaticResource ButtonAccentRevealStyle&#125;&quot; HorizontalAlignment=&quot;Center&quot; Margin=&quot;3&quot; Click=&quot;Work&quot; /&gt;<br>    &lt;/StackPanel&gt;<br>&lt;/fw:AcrylicWindow&gt;<br></code></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;后台代码如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c#">public partial class MainWindow<br>&#123;<br>    public MainWindow()<br>    &#123;<br>        InitializeComponent();<br>    &#125;<br><br>    private void Select(object sender, RoutedEventArgs e)<br>    &#123;<br>        var fbd = new System.Windows.Forms.FolderBrowserDialog();<br>        if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)<br>        &#123;<br>            this.textBoxPath.Text = fbd.SelectedPath;<br>        &#125;<br>    &#125;<br><br>    private void Work(object sender, RoutedEventArgs e)<br>    &#123;<br>        if (this.textBoxPath.Template != null)<br>        &#123;<br>            var path = this.textBoxPath.Text;<br>            var files = Directory.GetFiles(path);<br>            if (files.Length != 0)<br>            &#123;<br>                for (int i = 0; i &lt; files.Length; i++)<br>                &#123;<br>                    string name = files[i];<br>                    if (Regex.IsMatch(name, @&quot;_高清 720P&quot;))<br>                    &#123;<br>                        var newName = Regex.Replace(name, @&quot;_高清 720P&quot;, &quot;&quot;);<br>                        File.Move(name, newName);<br>                    &#125;<br>                &#125;<br>                MessageBox.Show(&quot;Done.&quot;);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;运行测试: </p>
+<img src="/2021/09/20/C-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0/Work.png" class title="运行时">
+
+<p>&emsp;&emsp;按下工作, 舒服了.</p>
+<hr>
+
+
+<p>本文作者：Miuh<br>本文地址： <a href="https://chilldarksage.github.io/2021/09/20/C-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0/">https://ChillDarkSage.github.io/2021/09/20/C-批量修改文件名称/</a> <br>版权声明：转载请注明出处！<br> Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE<br><hr></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/C/"># C#</a>
+                    
+                        <a href="/tags/%E6%B0%B4/"># 水</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/08/28/%E6%8E%A2%E7%A9%B6%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E3%80%81%E5%8F%8A%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/">探究选择排序、插入排序、及希尔排序</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span><font color="gray">在这里, 遵循缪欧的法则.</font></span>
+
+
+</div>
+</footer>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"top":"-40px","right":"25px"},"mobile":{"show":false}});</script></body>
+
+</html>
