@@ -47,7 +47,8 @@
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Dark Ocean" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
     <script>
@@ -159,10 +160,60 @@
         <div class="post-content">
             <p>&emsp;&emsp;在B站上下载了一堆视频打算转成音频, 但是发现所有视频文件都包含“_高清&nbsp;720P”这个后缀, 看起来非常难受. 手动改则会耗费非常多的时间, 所以写了个小工具自动改名, 原理不能再简单: 只是删除所有文件名中这个字符串而已, 没什么好说的. <bp></bp></p>
 <p>&emsp;&emsp;新建一个WPF程序(使用了<a title="GitHub" target="_blank" rel="noopener" href="https://github.com/sourcechord/FluentWPF">FluentWPF</a>的UI, 还不错).</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xaml">&lt;fw:AcrylicWindow x:Class=&quot;Rename.MainWindow&quot;<br>        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;<br>        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;<br>        xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;<br>        xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;<br>        xmlns:fw=&quot;clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF&quot;<br>        mc:Ignorable=&quot;d&quot;<br>        Title=&quot;改名&quot; Height=&quot;150&quot; Width=&quot;300&quot; ResizeMode=&quot;CanMinimize&quot;  WindowStartupLocation=&quot;CenterScreen&quot;&gt;<br>    &lt;StackPanel &gt;<br>        &lt;TextBox x:Name=&quot;textBoxPath&quot; IsReadOnly=&quot;True&quot; Width=&quot;200&quot; Height=&quot;30&quot; FontSize=&quot;10&quot; Foreground=&quot;WhiteSmoke&quot; Style=&quot;&#123;StaticResource TextBoxRevealStyle&#125;&quot; HorizontalAlignment=&quot;Center&quot; Margin=&quot;5&quot;/&gt;<br>        &lt;Button Content=&quot;浏览&quot; Width=&quot;200&quot; Height=&quot;30&quot; FontSize=&quot;10&quot; Foreground=&quot;WhiteSmoke&quot; Style=&quot;&#123;StaticResource ButtonAccentRevealStyle&#125;&quot; HorizontalAlignment=&quot;Center&quot; Click=&quot;Select&quot;/&gt;<br>        &lt;Button Content=&quot;工作&quot; Width=&quot;200&quot; Height=&quot;30&quot; FontSize=&quot;10&quot; Foreground=&quot;WhiteSmoke&quot; Style=&quot;&#123;StaticResource ButtonAccentRevealStyle&#125;&quot; HorizontalAlignment=&quot;Center&quot; Margin=&quot;3&quot; Click=&quot;Work&quot; /&gt;<br>    &lt;/StackPanel&gt;<br>&lt;/fw:AcrylicWindow&gt;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;fw:AcrylicWindow x:Class&#x3D;&quot;Rename.MainWindow&quot;
+        xmlns&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;winfx&#x2F;2006&#x2F;xaml&#x2F;presentation&quot;
+        xmlns:x&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;winfx&#x2F;2006&#x2F;xaml&quot;
+        xmlns:d&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;expression&#x2F;blend&#x2F;2008&quot;
+        xmlns:mc&#x3D;&quot;http:&#x2F;&#x2F;schemas.openxmlformats.org&#x2F;markup-compatibility&#x2F;2006&quot;
+        xmlns:fw&#x3D;&quot;clr-namespace:SourceChord.FluentWPF;assembly&#x3D;FluentWPF&quot;
+        mc:Ignorable&#x3D;&quot;d&quot;
+        Title&#x3D;&quot;改名&quot; Height&#x3D;&quot;150&quot; Width&#x3D;&quot;300&quot; ResizeMode&#x3D;&quot;CanMinimize&quot;  WindowStartupLocation&#x3D;&quot;CenterScreen&quot;&gt;
+    &lt;StackPanel &gt;
+        &lt;TextBox x:Name&#x3D;&quot;textBoxPath&quot; IsReadOnly&#x3D;&quot;True&quot; Width&#x3D;&quot;200&quot; Height&#x3D;&quot;30&quot; FontSize&#x3D;&quot;10&quot; Foreground&#x3D;&quot;WhiteSmoke&quot; Style&#x3D;&quot;&#123;StaticResource TextBoxRevealStyle&#125;&quot; HorizontalAlignment&#x3D;&quot;Center&quot; Margin&#x3D;&quot;5&quot;&#x2F;&gt;
+        &lt;Button Content&#x3D;&quot;浏览&quot; Width&#x3D;&quot;200&quot; Height&#x3D;&quot;30&quot; FontSize&#x3D;&quot;10&quot; Foreground&#x3D;&quot;WhiteSmoke&quot; Style&#x3D;&quot;&#123;StaticResource ButtonAccentRevealStyle&#125;&quot; HorizontalAlignment&#x3D;&quot;Center&quot; Click&#x3D;&quot;Select&quot;&#x2F;&gt;
+        &lt;Button Content&#x3D;&quot;工作&quot; Width&#x3D;&quot;200&quot; Height&#x3D;&quot;30&quot; FontSize&#x3D;&quot;10&quot; Foreground&#x3D;&quot;WhiteSmoke&quot; Style&#x3D;&quot;&#123;StaticResource ButtonAccentRevealStyle&#125;&quot; HorizontalAlignment&#x3D;&quot;Center&quot; Margin&#x3D;&quot;3&quot; Click&#x3D;&quot;Work&quot; &#x2F;&gt;
+    &lt;&#x2F;StackPanel&gt;
+&lt;&#x2F;fw:AcrylicWindow&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>&emsp;&emsp;后台代码如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c#">public partial class MainWindow<br>&#123;<br>    public MainWindow()<br>    &#123;<br>        InitializeComponent();<br>    &#125;<br><br>    private void Select(object sender, RoutedEventArgs e)<br>    &#123;<br>        var fbd = new System.Windows.Forms.FolderBrowserDialog();<br>        if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)<br>        &#123;<br>            this.textBoxPath.Text = fbd.SelectedPath;<br>        &#125;<br>    &#125;<br><br>    private void Work(object sender, RoutedEventArgs e)<br>    &#123;<br>        if (this.textBoxPath.Text != null)<br>        &#123;<br>            var path = this.textBoxPath.Text;<br>            var files = Directory.GetFiles(path);<br>            if (files.Length != 0)<br>            &#123;<br>                for (int i = 0; i &lt; files.Length; i++)<br>                &#123;<br>                    string name = files[i];<br>                    if (Regex.IsMatch(name, @&quot;_高清 720P&quot;))<br>                    &#123;<br>                        var newName = Regex.Replace(name, @&quot;_高清 720P&quot;, &quot;&quot;);<br>                        File.Move(name, newName);<br>                    &#125;<br>                &#125;<br>                MessageBox.Show(&quot;Done.&quot;);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public partial class MainWindow
+&#123;
+    public MainWindow()
+    &#123;
+        InitializeComponent();
+    &#125;
+
+    private void Select(object sender, RoutedEventArgs e)
+    &#123;
+        var fbd &#x3D; new System.Windows.Forms.FolderBrowserDialog();
+        if (fbd.ShowDialog() &#x3D;&#x3D; System.Windows.Forms.DialogResult.OK)
+        &#123;
+            this.textBoxPath.Text &#x3D; fbd.SelectedPath;
+        &#125;
+    &#125;
+
+    private void Work(object sender, RoutedEventArgs e)
+    &#123;
+        if (this.textBoxPath.Text !&#x3D; null)
+        &#123;
+            var path &#x3D; this.textBoxPath.Text;
+            var files &#x3D; Directory.GetFiles(path);
+            if (files.Length !&#x3D; 0)
+            &#123;
+                for (int i &#x3D; 0; i &lt; files.Length; i++)
+                &#123;
+                    string name &#x3D; files[i];
+                    if (Regex.IsMatch(name, @&quot;_高清 720P&quot;))
+                    &#123;
+                        var newName &#x3D; Regex.Replace(name, @&quot;_高清 720P&quot;, &quot;&quot;);
+                        File.Move(name, newName);
+                    &#125;
+                &#125;
+                MessageBox.Show(&quot;Done.&quot;);
+            &#125;
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>&emsp;&emsp;运行测试: </p>
 <img src="/2021/09/20/C-%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0/Work.png" class title="运行时">
